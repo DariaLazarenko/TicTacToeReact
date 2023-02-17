@@ -66,29 +66,37 @@ export default function TicTacToe() {
     );
   }
 
+  async function resetGame() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setGameStatus("");
+    setFields(Array(9).fill(null));
+  }
+
   function handleClick(index) {
     let newFields = [...fields];
 
     if (newFields[index] === null) {
       newFields[index] = "X";
     }
+    setFields(newFields);
 
     const isWin = Win(newFields);
 
     if (isWin === "X") {
       setGameStatus("You win");
-      setFields(Array(9).fill(null));
+      resetGame();
     } else {
       let nonNullFields = newFields.filter((field) => field !== null);
       if (nonNullFields.length === 9) {
         setGameStatus("Draw");
-        setFields(Array(9).fill(null));
+        resetGame();
       } else {
         newFields = [...ChooseRandomField(newFields)];
+        setFields(newFields);
         const isWin = Win(newFields);
         if (isWin === "O") {
           setGameStatus("You lose");
-          setFields(Array(9).fill(null));
+          resetGame();
         }
       }
     }
