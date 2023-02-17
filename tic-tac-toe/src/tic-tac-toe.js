@@ -1,5 +1,3 @@
 export default function TicTacToe() {
-  return (
-    <div>TicTacToe</div>
-  );
+  return <div>TicTacToe</div>;
 }
