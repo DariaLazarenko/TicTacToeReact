@@ -4,10 +4,6 @@ export default function TicTacToe() {
   const [fields, setFields] = useState(Array(9).fill(null));
   const [gameStatus, setGameStatus] = useState("");
 
-  if (Math.floor(Math.random() * 2) === 0) {
-    setFields(AiResponse(fields));
-  }
-
   function AiResponse(fields) {
     let isSet = false;
     while (!isSet) {
@@ -71,6 +67,9 @@ export default function TicTacToe() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setGameStatus("");
     setFields(Array(9).fill(null));
+    if (Math.floor(Math.random() * 2) === 0) {
+      setFields(AiResponse(fields));
+    }
   }
 
   function handleClick(index) {
