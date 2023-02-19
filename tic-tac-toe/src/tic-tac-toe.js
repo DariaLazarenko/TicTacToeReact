@@ -96,7 +96,7 @@ export default function TicTacToe() {
       resetGame();
     } else {
       // create a list of non-null fields
-      let nonNullFields = newFields.filter((field) => field !== null);
+      const nonNullFields = newFields.filter((field) => field !== null);
       if (nonNullFields.length === 9) {
         setGameStatus("Draw🤝");
         resetGame();
