@@ -92,20 +92,20 @@ export default function TicTacToe() {
     setFields(newFields);
 
     if (Win(newFields) === "X") {
-      setGameStatus("You win");
+      setGameStatus("You win🥳");
       resetGame();
     } else {
       // create a list of non-null fields
       let nonNullFields = newFields.filter((field) => field !== null);
       if (nonNullFields.length === 9) {
-        setGameStatus("Draw");
+        setGameStatus("Draw🤝");
         resetGame();
       } else {
         // fill a random empty field with the "0"
         newFields = [...AiResponse(newFields)];
         setFields(newFields);
         if (Win(newFields) === "O") {
-          setGameStatus("You lose");
+          setGameStatus("You lose😔");
           resetGame();
         }
       }
@@ -114,6 +114,7 @@ export default function TicTacToe() {
 
   return (
     <>
+      <h1>TicTacToe!</h1>
       <div className="btn-container">
         <Field value={fields[0]} onFieldClick={() => handleClick(0)} />
         <Field value={fields[1]} onFieldClick={() => handleClick(1)} />
@@ -129,7 +130,7 @@ export default function TicTacToe() {
         <Field value={fields[7]} onFieldClick={() => handleClick(7)} />
         <Field value={fields[8]} onFieldClick={() => handleClick(8)} />
       </div>
-      <>{gameStatus}</>
+      <h2>{gameStatus}</h2>
     </>
   );
 }
