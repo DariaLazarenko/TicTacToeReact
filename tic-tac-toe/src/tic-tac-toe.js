@@ -7,7 +7,6 @@ export default function TicTacToe() {
   function AiResponse(fields) {
     let isSet = false;
     while (!isSet) {
-      // get a random index between 0 and 8
       const randomIndex = Math.floor(Math.random() * 9);
       if (fields[randomIndex] === null) {
         fields[randomIndex] = "O";
@@ -55,17 +54,9 @@ export default function TicTacToe() {
     return "";
   }
 
-  function Field({ value, onClick }) {
+  function Field({ value, onFieldClick }) {
     return (
-      <button
-        style={{
-          width: "100px",
-          height: "100px",
-          fontSize: "50px",
-          margin: "10px",
-        }}
-        onClick={onClick}
-      >
+      <button className="btn-field" onClick={onFieldClick}>
         {value}
       </button>
     );
@@ -109,18 +100,21 @@ export default function TicTacToe() {
 
   return (
     <>
-      <Field value={fields[0]} onClick={() => handleClick(0)} />
-      <Field value={fields[1]} onClick={() => handleClick(1)} />
-      <Field value={fields[2]} onClick={() => handleClick(2)} />
-      <br />
-      <Field value={fields[3]} onClick={() => handleClick(3)} />
-      <Field value={fields[4]} onClick={() => handleClick(4)} />
-      <Field value={fields[5]} onClick={() => handleClick(5)} />
-      <br />
-      <Field value={fields[6]} onClick={() => handleClick(6)} />
-      <Field value={fields[7]} onClick={() => handleClick(7)} />
-      <Field value={fields[8]} onClick={() => handleClick(8)} />
-      <br />
+      <div className="btn-container">
+        <Field value={fields[0]} onFieldClick={() => handleClick(0)} />
+        <Field value={fields[1]} onFieldClick={() => handleClick(1)} />
+        <Field value={fields[2]} onFieldClick={() => handleClick(2)} />
+      </div>
+      <div className="btn-container">
+        <Field value={fields[3]} onFieldClick={() => handleClick(3)} />
+        <Field value={fields[4]} onFieldClick={() => handleClick(4)} />
+        <Field value={fields[5]} onFieldClick={() => handleClick(5)} />
+      </div>
+      <div className="btn-container">
+        <Field value={fields[6]} onFieldClick={() => handleClick(6)} />
+        <Field value={fields[7]} onFieldClick={() => handleClick(7)} />
+        <Field value={fields[8]} onFieldClick={() => handleClick(8)} />
+      </div>
       <>{gameStatus}</>
     </>
   );
