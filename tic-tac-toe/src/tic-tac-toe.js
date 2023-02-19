@@ -7,7 +7,6 @@ export default function TicTacToe() {
   function AiResponse(fields) {
     let isSet = false;
     while (!isSet) {
-      // get a random index between 0 and 8
       const randomIndex = Math.floor(Math.random() * 9);
       if (fields[randomIndex] === null) {
         fields[randomIndex] = "O";
