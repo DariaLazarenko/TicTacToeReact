@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
 export default function TicTacToe() {
-  const [fields, setFields] = useState(Array(9).fill(null));
+  const [fields, setFields] = useState(() => {
+    let newFields = Array(9).fill(null);
+    if (Math.floor(Math.random() * 2) === 0) {
+      newFields = AiResponse(newFields);
+    }
+    return newFields;
+  });
   const [gameStatus, setGameStatus] = useState("");
 
   function AiResponse(fields) {
@@ -66,7 +72,11 @@ export default function TicTacToe() {
     // Timer that waits a second before continuing code execution
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setGameStatus("");
-    setFields(Array(9).fill(null));
+    let newFields = Array(9).fill(null);
+    if (Math.floor(Math.random() * 2) === 0) {
+      newFields = AiResponse(newFields);
+    }
+    setFields(newFields);
   }
 
   function handleClick(index) {
