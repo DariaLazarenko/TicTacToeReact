@@ -2,7 +2,7 @@
 
 Simple Tic Tac Toe game, builded with React.js
 
-Deployed by Versel - https://tic-tac-toe-react-navy-two.vercel.app/
+Deployed by Versel - https://tic-tac-toe-react-navy-two.vercel.app
 
 ### PR Merging Rules
 
