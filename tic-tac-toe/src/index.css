@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #3d405b;
+  color: #e07a5f;
 }
 
 code {
@@ -18,6 +20,11 @@ code {
   font-size: 50px;
   margin: 10px;
   float: left;
+  background: #e07a5f;
+  border: 1px solid #3d405b;
+  color: #3d405b;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
 .btn-container::after {
