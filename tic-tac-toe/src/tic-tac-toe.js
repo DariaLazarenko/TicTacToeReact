@@ -4,7 +4,7 @@ export default function TicTacToe() {
   const [fields, setFields] = useState(Array(9).fill(null));
   const [gameStatus, setGameStatus] = useState("");
 
-  function FillRandomFieldWith0(fields) {
+  function FillRandomFieldWith0(fields) { // 'AI response'
     // create a variable to track if we have set a value
     let isSet = false;
     // while we have not set a value
