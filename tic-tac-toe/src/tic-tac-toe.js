@@ -4,7 +4,7 @@ export default function TicTacToe() {
   const [fields, setFields] = useState(Array(9).fill(null));
   const [gameStatus, setGameStatus] = useState("");
 
-  function ChooseRandomField(fields) {
+  function FillRandomFieldWith0(fields) {
     let isSet = false;
     while (!isSet) {
       const randomIndex = Math.floor(Math.random() * 9);
@@ -91,7 +91,7 @@ export default function TicTacToe() {
         setGameStatus("Draw");
         resetGame();
       } else {
-        newFields = [...ChooseRandomField(newFields)];
+        newFields = [...FillRandomFieldWith0(newFields)];
         setFields(newFields);
         const isWin = Win(newFields);
         if (isWin === "O") {
