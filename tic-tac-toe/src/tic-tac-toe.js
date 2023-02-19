@@ -4,7 +4,7 @@ export default function TicTacToe() {
   const [fields, setFields] = useState(Array(9).fill(null));
   const [gameStatus, setGameStatus] = useState("");
 
-  if (Math.floor(Math.random() * 1) === 0) {
+  if (Math.floor(Math.random() * 2) === 0) {
     setFields(AiResponse(fields));
   }
 
