@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #3d405b;
   color: #e07a5f;
+  text-align: center;
 }
 
 code {
@@ -31,4 +32,10 @@ code {
   content: "";
   clear: both;
   display: table;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
