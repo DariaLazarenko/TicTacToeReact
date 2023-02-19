@@ -70,11 +70,11 @@ export default function TicTacToe() {
   }
 
   function handleClick(index) {
-    let newFields = [...fields];
-
-    if (newFields[index] != null) {
+    if (fields[index] != null) {
       return;
     }
+
+    let newFields = [...fields];
 
     if (newFields[index] === null) {
       newFields[index] = "X";
