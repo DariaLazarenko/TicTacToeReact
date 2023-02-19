@@ -4,10 +4,8 @@ export default function TicTacToe() {
   const [fields, setFields] = useState(Array(9).fill(null));
   const [gameStatus, setGameStatus] = useState("");
 
-  function FillRandomFieldWith0(fields) { // 'AI response'
-    // create a variable to track if we have set a value
+  function AiResponse(fields) {
     let isSet = false;
-    // while we have not set a value
     while (!isSet) {
       // get a random index between 0 and 8
       const randomIndex = Math.floor(Math.random() * 9);
@@ -21,7 +19,7 @@ export default function TicTacToe() {
 
   function Win(fields) {
     for (let i = 0; i < 3; i++) {
-      // check all rows
+      // check all columns
       if (
         fields[i] === fields[i + 3] &&
         fields[i] === fields[i + 6] &&
@@ -29,7 +27,7 @@ export default function TicTacToe() {
       ) {
         return fields[i];
       }
-      // check all columns
+      // check all rows
       if (
         fields[i * 3] === fields[i * 3 + 1] &&
         fields[i * 3] === fields[i * 3 + 2] &&
@@ -57,7 +55,6 @@ export default function TicTacToe() {
     return "";
   }
 
-  /* This is a function component that takes two props, value and onClick. The onClick function will be called when the button is clicked. */
   function Field({ value, onClick }) {
     return (
       <button
@@ -75,56 +72,35 @@ export default function TicTacToe() {
   }
 
   async function resetGame() {
-    // Wait a second
+    // Timer that waits a second before continuing code execution
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    // Clear the game status
     setGameStatus("");
-    // Clear the fields
     setFields(Array(9).fill(null));
   }
 
   function handleClick(index) {
-    // create a copy of fields array
     let newFields = [...fields];
 
-    // check if the clicked field is not already filled
     if (newFields[index] === null) {
-      // fill the clicked field with the "X"
       newFields[index] = "X";
     }
-    // update the fields array
     setFields(newFields);
 
-    // check if the game is finished
-    const isWin = Win(newFields);
-
-    // if the game is finished
-    if (isWin === "X") {
-      // set the game status to "You win"
+    if (Win(newFields) === "X") {
       setGameStatus("You win");
-      // reset the game
       resetGame();
     } else {
       // create a list of non-null fields
       let nonNullFields = newFields.filter((field) => field !== null);
-      // if the list of non-null fields has 9 elements
       if (nonNullFields.length === 9) {
-        // set the game status to "Draw"
         setGameStatus("Draw");
-        // reset the game
         resetGame();
       } else {
         // fill a random empty field with the "0"
-        newFields = [...FillRandomFieldWith0(newFields)];
-        // update the fields array
+        newFields = [...AiResponse(newFields)];
         setFields(newFields);
-        // check if the game is finished
-        const isWin = Win(newFields);
-        // if the game is finished
-        if (isWin === "O") {
-          // set the game status to "You lose"
+        if (Win(newFields) === "O") {
           setGameStatus("You lose");
-          // reset the game
           resetGame();
         }
       }
