@@ -1,6 +1,6 @@
 # TicTacToeReact
 
-Simple Tic Tac Toe game, builded by React.js
+Simple Tic Tac Toe game, builded with React.js
 
 ### PR Merging Rules
 
