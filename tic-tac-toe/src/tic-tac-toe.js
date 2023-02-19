@@ -95,7 +95,7 @@ export default function TicTacToe() {
         newFields = [...AiResponse(newFields)];
         setFields(newFields);
         if (Win(newFields) === "O") {
-          setGameStatus("You lose🥳");
+          setGameStatus("You lose😔");
           resetGame();
         }
       }
