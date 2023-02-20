@@ -22,39 +22,44 @@ export default function TicTacToe() {
     return fields;
   }
 
-  function Win(fields) {
+  function Win(inputFields) {
     for (let i = 0; i < 3; i++) {
       // check all columns
       if (
-        fields[i] === fields[i + 3] &&
-        fields[i] === fields[i + 6] &&
-        fields[i] !== null
+        inputFields[i] === inputFields[i + 3] &&
+        inputFields[i] === inputFields[i + 6] &&
+        inputFields[i] !== null
       ) {
-        return fields[i];
+        return inputFields[i];
       }
       // check all rows
       if (
-        fields[i * 3] === fields[i * 3 + 1] &&
-        fields[i * 3] === fields[i * 3 + 2] &&
-        fields[i * 3] !== null
+        inputFields[i * 3] === inputFields[i * 3 + 1] &&
+        inputFields[i * 3] === inputFields[i * 3 + 2] &&
+        inputFields[i * 3] !== null
       ) {
-        return fields[i * 3];
+        return inputFields[i * 3];
       }
     }
     // check both diagonals
     if (
-      fields[0] === fields[4] &&
-      fields[0] === fields[8] &&
-      fields[0] !== null
+      inputFields[0] === inputFields[4] &&
+      inputFields[0] === inputFields[8] &&
+      inputFields[0] !== null
     ) {
-      return fields[0];
+      return inputFields[0];
     }
     if (
-      fields[2] === fields[4] &&
-      fields[2] === fields[6] &&
-      fields[2] !== null
+      inputFields[2] === inputFields[4] &&
+      inputFields[2] === inputFields[6] &&
+      inputFields[2] !== null
     ) {
-      return fields[2];
+      return inputFields[2];
+    }
+
+    const nonNullFields = inputFields.filter((field) => field !== null);
+    if (nonNullFields.length === 9) {
+      return "Draw";
     }
     // if we get here, no one has won
     return "";
@@ -94,20 +99,19 @@ export default function TicTacToe() {
     if (Win(newFields) === "X") {
       setGameStatus("You win🥳");
       resetGame();
+    } else if (Win(newFields) === "Draw") {
+      setGameStatus("Draw🤝");
+      resetGame();
     } else {
-      // create a list of non-null fields
-      const nonNullFields = newFields.filter((field) => field !== null);
-      if (nonNullFields.length === 9) {
+      // fill a random empty field with the "0"
+      newFields = [...AiResponse(newFields)];
+      setFields(newFields);
+      if (Win(newFields) === "O") {
+        setGameStatus("You lose😔");
+        resetGame();
+      } else if (Win(newFields) === "Draw") {
         setGameStatus("Draw🤝");
         resetGame();
-      } else {
-        // fill a random empty field with the "0"
-        newFields = [...AiResponse(newFields)];
-        setFields(newFields);
-        if (Win(newFields) === "O") {
-          setGameStatus("You lose😔");
-          resetGame();
-        }
       }
     }
   }
