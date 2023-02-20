@@ -85,7 +85,7 @@ export default function TicTacToe() {
   }
 
   function handleClick(index) {
-    if (fields[index] != null) {
+    if (fields[index] !== null || gameStatus !== "") {
       return;
     }
 
