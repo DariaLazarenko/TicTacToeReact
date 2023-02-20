@@ -34,11 +34,12 @@ code {
   border-radius: 10px;
 }
 
+.btn-field:hover {
+  background: #e3866c;
+}
+
 .btn-container::after {
   content: "";
   clear: both;
   display: table;
-}
-
-.btn-container {
 }
