@@ -1,6 +1,6 @@
 # TicTacToeReact
 
-Simple Tic Tac Toe game, builded with React.js
+Simple Tic Tac Toe game, built with React.js
 
 Deployed by Versel - https://tic-tac-toe-react-navy-two.vercel.app
 
